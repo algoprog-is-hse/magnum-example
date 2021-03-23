@@ -12,10 +12,15 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/mosra/corrade.git
   GIT_TAG        v2020.06
 )
-set(WITH_SDL2APPLICATION ON CACHE BOOL "" FORCE) # enable what you need
+FetchContent_Declare(
+    GLFW
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_TAG        3.3.3
+)
+set(WITH_GLFWAPPLICATION ON CACHE BOOL "" FORCE) # enable what you need
 set(WITH_ANYIMAGEIMPORTER ON CACHE BOOL "" FORCE) # enable what you need
 
-FetchContent_MakeAvailable(corrade magnum)
+FetchContent_MakeAvailable(GLFW corrade magnum )
 
 project(ArcBallExample)
 list(APPEND CMAKE_PREFIX_PATH ${magnum_SOURCE_DIR}/modules ${corrade_SOURCE_DIR}/modules)
@@ -27,7 +32,7 @@ find_package(Magnum REQUIRED
     Primitives
     SceneGraph
     Shaders
-    Sdl2Application)
+    GlfwApplication)
 add_executable(magnum-arcball WIN32
     ArcBall.cpp
     ArcBallExample.cpp)

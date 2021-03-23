@@ -40,7 +40,7 @@
 #include <Magnum/Math/Color.h>
 #include <Magnum/Math/Matrix4.h>
 #include <Magnum/MeshTools/Compile.h>
-#include <Magnum/Platform/Sdl2Application.h>
+#include <Magnum/Platform/GlfwApplication.h>
 #include <Magnum/Primitives/Cube.h>
 #include <Magnum/SceneGraph/Camera.h>
 #include <Magnum/SceneGraph/Drawable.h>
@@ -169,7 +169,7 @@ ArcBallExample::ArcBallExample(const Arguments& arguments) :
 
     /* Loop at 60 Hz max */
     setSwapInterval(1);
-    setMinimalLoopPeriod(16);
+    /* setMinimalLoopPeriod(16); */
 }
 
 void ArcBallExample::drawEvent() {
@@ -218,7 +218,7 @@ void ArcBallExample::keyPressEvent(KeyEvent& event) {
 void ArcBallExample::mousePressEvent(MouseEvent& event) {
     /* Enable mouse capture so the mouse can drag outside of the window */
     /** @todo replace once https://github.com/mosra/magnum/pull/419 is in */
-    SDL_CaptureMouse(SDL_TRUE);
+    /* SDL_CaptureMouse(SDL_TRUE); */
 
     _arcballCamera->initTransformation(event.position());
 
@@ -229,7 +229,7 @@ void ArcBallExample::mousePressEvent(MouseEvent& event) {
 void ArcBallExample::mouseReleaseEvent(MouseEvent&) {
     /* Disable mouse capture again */
     /** @todo replace once https://github.com/mosra/magnum/pull/419 is in */
-    SDL_CaptureMouse(SDL_FALSE);
+    /* SDL_CaptureMouse(SDL_FALSE); */
 }
 
 void ArcBallExample::mouseMoveEvent(MouseMoveEvent& event) {
